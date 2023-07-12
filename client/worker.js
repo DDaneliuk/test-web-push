@@ -1,6 +1,7 @@
 console.log("Service Worker Loaded...");
 
-self.addEventListener("push", () => {
-  console.log("Push Recieved...");
-  self.registration.showNotification('test', {});
+self.addEventListener('push', function(event) {
+  const promiseChain = self.registration.showNotification('Hello, World.');
+
+  event.waitUntil(promiseChain);
 });
